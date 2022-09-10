@@ -32,6 +32,7 @@ public class TaskService {
         if (project == null || employeeDev == null) return null;
         task.setProjectTask(project);
         task.setEmployeeTask(employeeDev);
+        project.setStatus();
         return taskRepositorie.save(task);
     }
 
@@ -68,9 +69,19 @@ public class TaskService {
         task1.setStatus(task.getStatus());
         task1.setVerified(task.isVerified());
         task1.setProjectTask(task.getProjectTask());
-
-        System.out.println(""+task);
+        task1.getProjectTask().setStatus();
+        System.err.println(""+task1.getProjectTask());
 
         return taskRepositorie.save(task);
+    }
+
+    public Task saveTask(Task task) {
+        Task task1 = taskRepositorie.findById(task.getId_Task()).orElse(null);
+        task1.setStatus(task.getStatus());
+        task1.setDuration(task.getDuration());
+        task1.getProjectTask().setDuration();
+        return taskRepositorie.save(task1);
+
+
     }
 }

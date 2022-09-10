@@ -48,7 +48,7 @@ public class EmployeeController {
 
     @GetMapping("/findAll/Dev")
     public List<Employee> findAllDev() {
-        return employeeRepositorie.findAll().stream().filter(t -> t instanceof EmployeeDev).collect(Collectors.toList());
+        return employeeRepositorie.findAll().stream().filter(EmployeeDev.class::isInstance).toList();
     }
 
     @GetMapping("/findAllM/Dev")

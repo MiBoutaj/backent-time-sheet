@@ -19,4 +19,9 @@ public interface TaskRepositorie extends JpaRepository<Task,Long> {
 
     @Query(value = "SELECT COUNT(*) FROM task WHERE project_task_id_project = :id AND task.status like 'Done' " , nativeQuery = true)
     Integer taskDone(@Param("id") Long id);
+
+    @Query(value = "SELECT COUNT(*) FROM task WHERE task.status like 'Done' AND task.verified =0" , nativeQuery = true)
+    Integer taskDoneNoVerified();
+
+
 }

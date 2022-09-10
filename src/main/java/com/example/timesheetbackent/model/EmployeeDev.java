@@ -26,12 +26,13 @@ public class EmployeeDev extends Employee implements Serializable {
     private List<Task> taskList;
 
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade= {CascadeType.REMOVE},fetch = FetchType.EAGER)
     @JoinTable( name = "Employee_Event",
             joinColumns = @JoinColumn(name = "id"),
             inverseJoinColumns = @JoinColumn(name = "id_Event")
     )
-    private List<Event> eventList;
+    @Fetch(value = FetchMode.SUBSELECT)
+    private List<Event> eventList= new ArrayList<>();
 
 
     @JsonIgnore

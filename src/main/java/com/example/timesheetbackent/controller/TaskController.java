@@ -69,9 +69,7 @@ public class TaskController {
     @CrossOrigin("*")
     @PutMapping("/editTaskForEmplyee/")
     public Task editTaskForEmplyee(@RequestBody Task task){
-        Task task1 = taskRepositorie.findById(task.getId_Task()).orElse(null);
-        task1.setStatus(task.getStatus());
-       return  taskRepositorie.save(task1);
+       return  taskService.saveTask(task);
     }
 
 

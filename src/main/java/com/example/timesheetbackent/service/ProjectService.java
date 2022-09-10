@@ -32,12 +32,14 @@ public class ProjectService {
         }
 
         List<Project> projectList = projectRepository.findByManagerProject(employee);
+        projectList.forEach(project -> project.setStatus());
         return projectList;
     }
 
 
 
     public Project addProject(Project project) {
+        project.setStatus();
         return projectRepository.save(project);
     }
 

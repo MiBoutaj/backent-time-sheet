@@ -31,7 +31,7 @@ public class EmployeeManager extends Employee implements Serializable {
 
 
    @JsonIgnore
-    @OneToMany(mappedBy = "employeeManagerEvent",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "employeeManagerEvent",cascade= {CascadeType.REMOVE},fetch = FetchType.EAGER)
     private List<Event> eventList;
 
 

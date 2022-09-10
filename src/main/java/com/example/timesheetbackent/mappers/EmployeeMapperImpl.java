@@ -13,23 +13,21 @@ public class EmployeeMapperImpl {
 
     public User fromUser(Employee employee) {
         User user = new User();
-        BeanUtils.copyProperties(employee,user);
+        BeanUtils.copyProperties(employee, user);
         return user;
     }
 
 
-
     public EmployeeM fromEmployee(EmployeeDev employee) {
-       EmployeeM employeeM  = new EmployeeM();
-        BeanUtils.copyProperties(employee,employeeM);
+        EmployeeM employeeM = new EmployeeM();
+        BeanUtils.copyProperties(employee, employeeM);
         return employeeM;
     }
 
 
-
     public EmployeeDev fromEmployeeM(EmployeeM employeeM) {
-        EmployeeDev employee  = new EmployeeDev();
-        BeanUtils.copyProperties(employeeM,employee);
+        EmployeeDev employee = new EmployeeDev();
+        BeanUtils.copyProperties(employeeM, employee);
         return employee;
     }
 }

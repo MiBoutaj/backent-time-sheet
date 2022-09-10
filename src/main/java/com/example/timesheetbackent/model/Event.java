@@ -24,27 +24,18 @@ public class Event {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonProperty("Id")
-    private Long id_Event;
-    @JsonProperty("Subject")
-    private String subject;
-    @DateTimeFormat(fallbackPatterns = "dd/MM/yyyy HH:mm")
-    @JsonFormat(pattern="yyyy,MM,dd,HH,mm")
-    @JsonProperty("StartTime")
-    private Date startDate;
-    @DateTimeFormat(fallbackPatterns = "dd/MM/yyyy HH:mm")
-    @JsonFormat(pattern="yyyy,MM,dd,HH,mm")
-    @JsonProperty("EndTime")
-    private Date endDate;
-
-
+    private Long id;
+    private String title;
+    private Date start;
+    private Date end;
     @JsonIgnore
     @ManyToOne
     private EmployeeManager employeeManagerEvent;
-
-
-
     @JsonIgnore
     @ManyToMany(mappedBy = "eventList")
     private List<EmployeeDev> employeeDevList;
+
+    public void removeEvent(Event event){
+        event.getEmployeeDevList().remove(this);
+    }
 }

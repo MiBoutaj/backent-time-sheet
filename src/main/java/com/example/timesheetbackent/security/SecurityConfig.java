@@ -38,6 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/task/**").permitAll().and().csrf().disable();
         http.authorizeRequests().antMatchers("/event/**").permitAll().and().csrf().disable();
         http.authorizeRequests().antMatchers("/find/**").permitAll().and().csrf().disable();
+        http.authorizeRequests().antMatchers("/dashboard/**").permitAll().and().csrf().disable();
         http.authorizeRequests().antMatchers("/time/**").permitAll().and().csrf().disable();
         http.authorizeRequests().antMatchers("/all").hasAuthority("ADMIN");
         http.authorizeRequests().anyRequest().authenticated();
